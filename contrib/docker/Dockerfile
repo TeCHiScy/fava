@@ -1,6 +1,6 @@
 FROM python:alpine as builder
 
-RUN apk add --update libxml2-dev libxslt-dev gcc musl-dev g++
+RUN apk add --update libxml2-dev libxslt-dev gcc musl-dev g++ bison flex
 RUN pip install --prefix="/install" fava
 
 FROM python:alpine

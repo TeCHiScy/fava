@@ -19,7 +19,7 @@ jobs:
     - name: Publish Docker image (latest)
       if: github.ref_type != 'tag'
       run: |
-        docker build contrib/docker --tag ghcr.io/techiscy/fava:latest
+        docker build contrib/docker -t ghcr.io/techiscy/fava:latest
         docker push ghcr.io/techiscy/fava:latest
     - name: Set release version
       if: github.ref_type == 'tag'
@@ -28,5 +28,5 @@ jobs:
     - name: Publish Docker image (tag)
       if: github.ref_type == 'tag'
       run: |
-        docker build contrib/docker --tag ghcr.io/techiscy/fava:${{ steps.release.outputs.tag }}
+        docker build contrib/docker -t ghcr.io/techiscy/fava:${{ steps.release.outputs.tag }}
         docker push ghcr.io/techiscy/fava:${{ steps.release.outputs.tag }}
